@@ -1,11 +1,7 @@
-body {
-    background-image: url(https://images.unsplash.com/photo-1611461314230-5a36bb4c230a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80);
-    background-repeat: no-repeat;
-    background-size: cover;
-    text-align: center;
-   
-}
 
+header {
+    text-align: center;
+}
 h1 {
     text-align: center;
     color: #cad2c5;
@@ -29,8 +25,16 @@ p {
     margin: 30px;
     color: #52796f;
     border-radius: 50px;
+    text-align: center;
 } 
+
+#question-section {
+    text-align: center;
+}
 
 button {
     border-radius: 50px;
+    text-align: center;
+    
 }
+
