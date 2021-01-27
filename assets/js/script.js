@@ -7,6 +7,10 @@ var option2 = document.getElementById("option2");
 var option3 = document.getElementById("option3");
 var option4 = document.getElementById("option4");
 var rightWrong = document.getElementById("right-wrong");
+var userDetails = document.getElementById("user-details");
+var userName = document.getElementById("username");
+var saveUser = document.getElementById("saveuser");
+var scoreDisplay = document.getElementById("score-display");
 var secondsLeft = 60;
 var currentQuestionIndex = 0
 var correctAnswer = 0
@@ -18,11 +22,14 @@ option2.addEventListener("click", checkOption)
 option3.addEventListener("click", checkOption)
 option4.addEventListener("click", checkOption)
 
+saveUser.addEventListener("click", saveUserInfo)
 
 
 
 //keeps hidden when first loaded
 questionSection.style.display = "none"
+
+userDetails.style.display = "none"
 
 startQuiz.addEventListener("click", function(){
     questionSection.style.display = "block"
@@ -105,4 +112,10 @@ endQuiz()
 
 function endQuiz() {
     questionSection.style.display = "none";
+    userDetails.style.display = "block";
+    scoreDisplay.textContent = correctAnswer  //multiple the correct answer with the time remaining --- after i get the timer set up
+}
+
+function saveUserInfo() {
+    console.log(saveUser)
 }
