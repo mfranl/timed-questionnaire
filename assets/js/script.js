@@ -6,8 +6,19 @@ var option1 = document.getElementById("option1");
 var option2 = document.getElementById("option2");
 var option3 = document.getElementById("option3");
 var option4 = document.getElementById("option4");
+var rightWrong = document.getElementById("right-wrong");
 var secondsLeft = 60;
 var currentQuestionIndex = 0
+var correctAnswer = 0
+var incorrectAnswer = 0
+
+
+option1.addEventListener("click", checkOption)
+option2.addEventListener("click", checkOption)
+option3.addEventListener("click", checkOption)
+option4.addEventListener("click", checkOption)
+
+
 
 
 //keeps hidden when first loaded
@@ -69,6 +80,29 @@ function beginQuiz() {
 
 
 function checkOption() {
-var userChoice = this.getAttribute("data-value")
+var userChoice = this.getAttribute("data-value");
+
 console.log(userChoice)
+
+if (userChoice == questions[currentQuestionIndex].answer) {
+    correctAnswer++;
+    rightWrong.textContent = "Correct!!"
+
+}else {
+    incorrectAnswer++;
+    rightWrong.textContent = "Wrong!!";
+}
+
+if (currentQuestionIndex < questions.length-1) {
+    currentQuestionIndex++;
+    beginQuiz();
+} else {
+    console.log("right answer", "correct answer")
+endQuiz()
+}
+
+}
+
+function endQuiz() {
+    questionSection.style.display = "none";
 }
