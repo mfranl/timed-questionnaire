@@ -1,3 +1,4 @@
+//variables save dto global memory
 var timeEl = document.querySelector(".time");
 var startQuiz = document.getElementById("startQuizButton");
 var questionSection = document.getElementById("question-section")
@@ -15,6 +16,7 @@ var secondsLeft = 60;
 var currentQuestionIndex = 0
 var correctAnswer = 0
 var incorrectAnswer = 0
+var timerInterval;
 
 
 option1.addEventListener("click", checkOption)
@@ -34,25 +36,27 @@ userDetails.style.display = "none"
 startQuiz.addEventListener("click", function(){
     questionSection.style.display = "block"
     startQuiz.style.display = "none"
-
+        setTime()
     beginQuiz()
 })
 
 
-
+//function saves info to make a timer start when start button is pressed
 function setTime() {
-    var timerInterval = setInterval(function() {
+    timerInterval = setInterval(function() {
         secondsLeft--;
+        //makes the time appear on screen
         timeEl.textContent = secondsLeft;
 
-        if(secondsLeft === 0) {
-            clearInterval(timerInterval);
+        if(secondsLeft <= 0) {
+            endQuiz();
             
         }
+        //makes sure the time is in seconds
     }, 1000);
 }
 
-setTime();
+
 
 
 var questions = [
@@ -89,7 +93,7 @@ function beginQuiz() {
 function checkOption() {
 var userChoice = this.getAttribute("data-value");
 
-console.log(userChoice)
+
 
 if (userChoice == questions[currentQuestionIndex].answer) {
     correctAnswer++;
@@ -97,6 +101,7 @@ if (userChoice == questions[currentQuestionIndex].answer) {
 
 }else {
     incorrectAnswer++;
+    secondsLeft = secondsLeft - 15;
     rightWrong.textContent = "Wrong!!";
 }
 
@@ -111,9 +116,12 @@ endQuiz()
 }
 
 function endQuiz() {
+    clearInterval(timerInterval);
     questionSection.style.display = "none";
+    
     userDetails.style.display = "block";
-    scoreDisplay.textContent = correctAnswer  //multiple the correct answer with the time remaining --- after i get the timer set up
+    scoreDisplay.textContent = "You got a score of " + secondsLeft
+    //multiple the correct answer with the time remaining --- after i get the timer set up
 }
 
 function saveUserInfo() {

@@ -17,7 +17,7 @@
     <header>
       <h1>Eazy Quiz!</h1>
       <hr />
-      <h4 class="time">Time Left</h4>
+      <h4 class="time"></h4>
     </header>
     <main>
       <p>
@@ -25,7 +25,7 @@
         time! Each wrong answer will penalize you 15 seconds :)
       </p>
 
-      <button id="startQuizButton">Start Quiz!</button>
+      <button class="startbutton" id="startQuizButton">Start Quiz!</button>
       <section id="question-section">
         <h6 id="question"></h6>
         <button id="option1" data-value="0"></button>
@@ -41,6 +41,8 @@
         <input type="text" name="" id="username" />
         <button id="saveuser">Save Info</button>
       </section>
+
+      <h3 id="finalscore"></h3>
     </main>
 
     <script src="./assets/js/script.js"></script>
